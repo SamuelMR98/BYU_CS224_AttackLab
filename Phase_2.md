@@ -82,6 +82,11 @@ Now we need to run the code until the instruction just below ```callq 0x401ab6 <
 ```until *0x40190f```
 
 Then you will gwt the promt ```Type string:``` type a string longer than the buffer(24 characters in this case). 
+
+```c
+Type string: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+```
+
 After that do:
 ```assembly
 x/s $rsp
