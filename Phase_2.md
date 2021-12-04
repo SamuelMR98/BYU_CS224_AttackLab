@@ -77,4 +77,14 @@ You will get something like below:
    0x0000000000401918 <+21>:	retq   
 End of assembler dump.
 ```
-Now we need to run the code until the instruction just below ```callq 0x401ab6 <Gets>``` so you will do something like
+Now we need to run the code until the instruction just below ```callq 0x401ab6 <Gets>``` so you will run the following command to get to the addres of that instruction:
+
+```until *0x40190f```
+
+Then you will gwt the promt ```Type string:``` type a string longer than the buffer(24 characters in this case). 
+After that do:
+```assembly
+x/s $rsp
+```
+
+
