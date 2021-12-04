@@ -26,9 +26,9 @@ Now you know the buffer size and you need to input 24 bytes of padding followed 
 
 To find the address the touch1, you need to get the dissasembled code for ctarget executable.
 
-```objdump -d rtarget > rtarget_dump.txt```
+```objdump -d rtarget > rtarget_dump.s```
 
-The above command will save the dissasembled code in file rtarget_dump.txt open that file and find the touch1 function.
+The above command will save the dissasembled code in file rtarget_dump.s open that file (I use vim) and find the touch1 function.
 
 I found touch1 inside rtarget which looked like
 
