@@ -68,6 +68,13 @@ Dissasemble it
 ```disas```
 
 You will get something like below:
+```assembly
+=> 0x0000000000401903 <+0>:	sub    $0x18,%rsp
+   0x0000000000401907 <+4>:	mov    %rsp,%rdi
+   0x000000000040190a <+7>:	callq  0x401b8d <Gets>
+   0x000000000040190f <+12>:	mov    $0x1,%eax
+   0x0000000000401914 <+17>:	add    $0x18,%rsp
+   0x0000000000401918 <+21>:	retq   
+End of assembler dump.
 ```
-
-```
+Now we need to run the code until the instruction just below ```callq 0x401ab6 <Gets>``` so you will do something like
