@@ -64,3 +64,10 @@ Finally, you run the raw file
 ```./ctarget < raw-phase1.txt```
 
 You will get something like below if your solution is right.
+```ssh
+Cookie: 0x3451d86d
+Type string:Touch1!: You called touch1()
+Valid solution for level 1 with target ctarget
+PASS: Sent exploit string to server to be validated.
+NICE JOB!
+```
